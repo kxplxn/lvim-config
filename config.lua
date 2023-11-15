@@ -3,10 +3,14 @@
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
 
--- copy to/from clipboard
+-- clipboard
 vim.keymap.set('n', '<leader>y', '"+y')
 vim.keymap.set('v', '<leader>y', '"+y')
 vim.keymap.set('n', '<leader>p', '"+p')
 vim.keymap.set('v', '<leader>p', '"+p')
 vim.keymap.set('n', '<leader>P', '"+P')
 vim.keymap.set('v', '<leader>P', '"+P')
+
+-- nvimtree
+lvim.builtin.nvimtree.setup.view.adaptive_size = true
+lvim.builtin.nvimtree.setup.view.width = 60
