@@ -52,6 +52,9 @@ lvim.plugins = {
 }
 
 -- keymap
+lvim.keys.normal_mode["<A-l>"] = ":BufferLineCycleNext<CR>"
+lvim.keys.normal_mode["<A-h>"] = ":BufferLineCyclePrev<CR>"
+
 local wk = require("which-key")
 wk.register({
   t = {
