@@ -18,3 +18,47 @@ vim.keymap.set('v', '<leader>P', '"+P')
 -- nvimtree
 lvim.builtin.nvimtree.setup.view.adaptive_size = true
 lvim.builtin.nvimtree.setup.view.width = 60
+
+-- TODO: move neotest into its own file and configure directory testing or build tags
+
+-- plugins
+lvim.plugins = {
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-neotest/neotest-go",
+      -- Your other test adapters here
+    },
+    config = function()
+      -- get neotest namespace (api call creates or returns namespace)
+      local neotest_ns = vim.api.nvim_create_namespace("neotest")
+      vim.diagnostic.config({
+        virtual_text = {
+          format = function(diagnostic)
+            local message =
+                diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+            return message
+          end,
+        },
+      }, neotest_ns)
+      require("neotest").setup({
+        -- your neotest config here
+        adapters = {
+          require("neotest-go"),
+        },
+      })
+    end,
+  }
+}
+
+-- keymap
+local wk = require("which-key")
+wk.register({
+  t = {
+    name = "neotest",
+    t = { "<cmd>lua require('neotest').run.run()<cr>", "Test Function" },
+    f = { "<cmd>lua require('neotest').run.run({vim.fn.expand('%')})<cr>", "Test File" },
+    s = { "<cmd>lua require('neotest').run.run({vim.fn.getcwd()})<cr>", "Test Project" },
+    S = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Test Summary" },
+  }
+})
