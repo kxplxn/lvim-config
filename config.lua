@@ -19,10 +19,10 @@ vim.keymap.set('v', '<leader>P', '"+P')
 lvim.builtin.nvimtree.setup.view.adaptive_size = true
 lvim.builtin.nvimtree.setup.view.width = 60
 
--- TODO: move neotest into its own file and configure directory testing or build tags
 
 -- plugins
 lvim.plugins = {
+  -- TODO: figure out build tags for neotest
   {
     "nvim-neotest/neotest",
     dependencies = {
@@ -58,6 +58,7 @@ wk.register({
     name = "neotest",
     t = { "<cmd>lua require('neotest').run.run()<cr>", "Test Function" },
     f = { "<cmd>lua require('neotest').run.run({vim.fn.expand('%')})<cr>", "Test File" },
+    d = { "<cmd>lua require('neotest').run.run({vim.fn.expand('%:h')})<cr>", "Test Directory" },
     s = { "<cmd>lua require('neotest').run.run({vim.fn.getcwd()})<cr>", "Test Project" },
     S = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Test Summary" },
   }
