@@ -17,7 +17,7 @@ vim.keymap.set('v', '<leader>P', '"+P')
 
 -- nvimtree
 lvim.builtin.nvimtree.setup.view.adaptive_size = true
-lvim.builtin.nvimtree.setup.view.width = 60
+lvim.builtin.nvimtree.setup.view.width = 65
 
 
 -- plugins
