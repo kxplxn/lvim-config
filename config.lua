@@ -17,11 +17,11 @@ vim.keymap.set('v', '<leader>P', '"+P')
 
 -- nvimtree
 lvim.builtin.nvimtree.setup.view.adaptive_size = true
-lvim.builtin.nvimtree.setup.view.width = 65
+lvim.builtin.nvimtree.setup.view.width = 90
 
 -- plugins
 lvim.plugins = {
-  -- TODO: figure out build tags for neotest
+  -- TODO: figure out build tags for neotest?
   {
     "nvim-neotest/neotest",
     dependencies = {
@@ -53,6 +53,7 @@ lvim.plugins = {
 -- keymap
 lvim.keys.normal_mode["<A-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<A-h>"] = ":BufferLineCyclePrev<CR>"
+lvim.keys.normal_mode["<C-k>"] = "<cmd>lua vim.diagnostic.open_float()<cr>"
 
 local wk = require("which-key")
 wk.register({
@@ -63,5 +64,5 @@ wk.register({
     d = { "<cmd>lua require('neotest').run.run({vim.fn.expand('%:h')})<cr>", "Test Directory" },
     s = { "<cmd>lua require('neotest').run.run({vim.fn.getcwd()})<cr>", "Test Project" },
     S = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Test Summary" },
-  }
+  },
 })
