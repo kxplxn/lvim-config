@@ -19,7 +19,6 @@ vim.keymap.set('v', '<leader>P', '"+P')
 lvim.builtin.nvimtree.setup.view.adaptive_size = true
 lvim.builtin.nvimtree.setup.view.width = 65
 
-
 -- plugins
 lvim.plugins = {
   -- TODO: figure out build tags for neotest
