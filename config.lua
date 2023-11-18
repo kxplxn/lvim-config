@@ -21,6 +21,13 @@ lvim.builtin.nvimtree.setup.view.width = 90
 
 -- plugins
 lvim.plugins = {
+  {
+    "sainnhe/gruvbox-material",
+    init = function()
+      vim.g.gruvbox_material_background = "hard"
+      vim.g.gruvbox_material_foreground = "material"
+    end,
+  },
   -- TODO: figure out build tags for neotest?
   {
     "nvim-neotest/neotest",
@@ -49,6 +56,8 @@ lvim.plugins = {
     end,
   }
 }
+
+lvim.colorscheme = "gruvbox-material"
 
 -- keymap
 lvim.keys.normal_mode["<A-l>"] = ":BufferLineCycleNext<CR>"
