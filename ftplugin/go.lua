@@ -5,7 +5,7 @@ local opts = {
   settings = {
     gopls = {
       buildFlags = {
-        "-tags=unit,integration"
+        "-tags=unit,integration,utest,itest"
       }
     }
   }
