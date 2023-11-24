@@ -54,7 +54,8 @@ lvim.plugins = {
         },
       })
     end,
-  }
+  },
+  { "leoluz/nvim-dap-go" }
 }
 
 lvim.colorscheme = "gruvbox-material"
