@@ -17,7 +17,7 @@ vim.keymap.set('v', '<leader>P', '"+P')
 
 -- nvimtree
 lvim.builtin.nvimtree.setup.view.adaptive_size = true
-lvim.builtin.nvimtree.setup.view.width = 90
+lvim.builtin.nvimtree.setup.view.width = 100
 
 -- plugins
 lvim.plugins = {
@@ -62,7 +62,7 @@ lvim.colorscheme = "gruvbox-material"
 -- keymap
 lvim.keys.normal_mode["<A-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<A-h>"] = ":BufferLineCyclePrev<CR>"
-lvim.keys.normal_mode["<C-k>"] = "<cmd>lua vim.diagnostic.open_float()<cr>"
+lvim.keys.normal_mode["<C-i>"] = "<cmd>lua vim.diagnostic.open_float()<cr>"
 
 local wk = require("which-key")
 wk.register({
