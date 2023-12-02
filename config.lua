@@ -5,7 +5,7 @@
 
 -- basic
 lvim.format_on_save = true
-vim.wo.colorcolumn = '81'
+vim.wo.colorcolumn = '81,101,121'
 
 -- clipboard
 vim.keymap.set('n', '<leader>y', '"+y')
@@ -21,28 +21,15 @@ lvim.builtin.nvimtree.setup.view.width = 100
 
 -- plugins
 lvim.plugins = {
-  -- themes
-  { 'projekt0n/github-nvim-theme' },
-  { "bluz71/vim-moonfly-colors" },
-  { 'dasupradyumna/midnight.nvim' },
-  { "rebelot/kanagawa.nvim" },
-
-  -- other
-  {
-    "sainnhe/gruvbox-material",
-    init = function()
-      vim.g.gruvbox_material_background = "hard"
-      vim.g.gruvbox_material_foreground = "material"
-    end,
-  },
-  -- TODO: figure out build tags for neotest?
+  "leoluz/nvim-dap-go",
   {
     "nvim-neotest/neotest",
     dependencies = {
+      -- adapters
       "nvim-neotest/neotest-go",
-      -- Your other test adapters here
     },
     opts = {
+      -- adapter config
       adapters = {
         ["neotest-go"] = {
           args = { "-tags=unit,integration,utest,itest" },
@@ -56,7 +43,8 @@ lvim.plugins = {
         virtual_text = {
           format = function(diagnostic)
             -- Replace newline and tab characters with space for more compact diagnostics
-            local message = diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+            local message = diagnostic.message
+                :gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
             return message
           end,
         },
@@ -91,16 +79,19 @@ lvim.plugins = {
       require("neotest").setup(opts)
     end,
   },
-  { "leoluz/nvim-dap-go" }
+
+  -- theme
+  "bluz71/vim-moonfly-colors",
 }
+lvim.colorscheme = "moonfly"
 
-lvim.colorscheme = "kanagawa"
-
--- keymap
+-- tab navigation
 lvim.keys.normal_mode["<A-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<A-h>"] = ":BufferLineCyclePrev<CR>"
+-- open diagostic
 lvim.keys.normal_mode["<C-e>"] = "<cmd>lua vim.diagnostic.open_float()<cr>"
 
+-- neotest keymap TODO: move to a subdirectory
 local wk = require("which-key")
 wk.register({
   t = {
