@@ -77,10 +77,21 @@ lvim.plugins = {
     end,
   },
 
+  "jose-elias-alvarez/null-ls.nvim",
+
   -- theme
   "bluz71/vim-moonfly-colors",
 }
 lvim.colorscheme = "moonfly"
+
+local null_ls = require("null-ls")
+
+null_ls.setup({
+  sources = {
+    null_ls.builtins.formatting.goimports,
+    null_ls.builtins.formatting.goimports_reviser,
+  }
+})
 
 -- tab navigation
 lvim.keys.normal_mode["<A-l>"] = ":BufferLineCycleNext<CR>"
