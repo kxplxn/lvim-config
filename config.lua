@@ -14,10 +14,12 @@ vim.keymap.set('v', '<leader>P', '"+P')
 
 -- nvimtree
 lvim.builtin.nvimtree.setup.view.adaptive_size = true
-lvim.builtin.nvimtree.setup.view.width = 100
+lvim.builtin.nvimtree.setup.view.width = 115
 
 -- plugins
 lvim.plugins = {
+  "github/copilot.vim",
+
   "leoluz/nvim-dap-go",
   {
     "nvim-neotest/neotest",
@@ -89,11 +91,12 @@ local null_ls = require("null-ls")
 null_ls.setup({
   sources = {
     null_ls.builtins.formatting.goimports,
-    null_ls.builtins.formatting.goimports_reviser.with({
-      args = { "-rm-unused", "-set-alias", "-format", "-recursive", "-imports-order=std,general,project,blanked,dotted", "$FILENAME" },
-    }),
+    null_ls.builtins.formatting.goimports_reviser,
   }
 })
+
+vim.g.copilot_assume_mapped = true
+vim.api.nvim_set_keymap("i", "<C-a>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
 -- tab navigation
 lvim.keys.normal_mode["<A-l>"] = ":BufferLineCycleNext<CR>"
