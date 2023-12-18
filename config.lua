@@ -19,6 +19,7 @@ lvim.builtin.nvimtree.setup.view.width = 115
 -- plugins
 lvim.plugins = {
   "github/copilot.vim",
+  "EdenEast/nightfox.nvim",
 
   "leoluz/nvim-dap-go",
   {
@@ -84,7 +85,7 @@ lvim.plugins = {
   -- theme
   "bluz71/vim-moonfly-colors",
 }
-lvim.colorscheme = "moonfly"
+lvim.colorscheme = "carbonfox"
 
 local null_ls = require("null-ls")
 
